@@ -9,24 +9,12 @@ export default class DezClientesMaisConsumiramQuantidade extends Listagem {
     }
     public listar(): void {
         console.log(`\nOs 10 clientes que mais consumiram em quantidade:`);
-
+    
         this.clientes.sort((a, b) => (b.getProdutosConsumidos.length + b.getServicosConsumidos.length - a.getProdutosConsumidos.length + a.getServicosConsumidos.length) ? -1 : 1)
-
-        let ordem = 1;
-
-        if (this.clientes.length > 9) {
-            for (let i = 0; i < 9; i++) {
-                this.clientes.forEach(ord => {
-                    console.log(`${ordem} - ${ord.nome}`);
-                    ordem++;
-                });
-            }
-        }
-        else {
-            this.clientes.forEach(ord => {
-                console.log(`${ordem} - ${ord.nome}`);
-                ordem++;
-            });
+    
+        for (let i = 0; i < Math.min(this.clientes.length, 10); i++) {
+            console.log(`${i + 1} - ${this.clientes[i].nome}`);
         }
     }
+    
 }

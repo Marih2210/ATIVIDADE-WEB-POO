@@ -27,22 +27,12 @@ var DezClientesMenosConsumiram = /** @class */ (function (_super) {
         return _this;
     }
     DezClientesMenosConsumiram.prototype.listar = function () {
-        console.log("\nOs 10 clientes que menos consumiram produtos/servicos:");
-        this.clientes.sort(function (a, b) { return (a.getProdutosConsumidos.length + a.getServicosConsumidos.length - b.getProdutosConsumidos.length + b.getServicosConsumidos.length); });
+        console.log("\nOs 10 clientes que menos consumiram produtos/servi\u00E7os:");
+        this.clientes.sort(function (a, b) { return (a.getProdutosConsumidos.length + a.getServicosConsumidos.length) - (b.getProdutosConsumidos.length + b.getServicosConsumidos.length); });
         var ordem = 1;
-        if (this.clientes.length > 9) {
-            for (var i = 0; i < 9; i++) {
-                this.clientes.forEach(function (ord) {
-                    console.log("".concat(ordem, " - ").concat(ord.nome));
-                    ordem++;
-                });
-            }
-        }
-        else {
-            this.clientes.forEach(function (ord) {
-                console.log("".concat(ordem, " - ").concat(ord.nome));
-                ordem++;
-            });
+        for (var i = 0; i < Math.min(this.clientes.length, 10); i++) {
+            console.log("".concat(ordem, " - ").concat(this.clientes[i].nome));
+            ordem++;
         }
     };
     return DezClientesMenosConsumiram;

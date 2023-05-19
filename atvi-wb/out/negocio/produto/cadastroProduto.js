@@ -36,6 +36,58 @@ var CadastroProduto = /** @class */ (function (_super) {
         var produto = new produto_1.default(nomeProduto, precoProduto);
         this.produtos.push(produto);
     };
+    CadastroProduto.prototype.gerarProntos = function () {
+        var produtos = [
+            "cotonetes",
+            "Creme Pantene",
+            "Sabonete DOVE",
+            "Sabonete LUX",
+            "Condicionador Clear Men de cacau",
+            "Shampoo Clear Men de cacau",
+            "Escova de dente Colgate",
+            "Fio dental",
+            "Cortador para unhas",
+            "Pente",
+            "Esmalte purpuro",
+            "Antisséptico bucal",
+            "Gillette prestobarba",
+            "Creme de barbear",
+            "Desodorante Old Spice",
+            "Lixa",
+            "Lenços",
+            "sabonetes para peles oleosas",
+            "protetor solar em spray",
+            "sabonetes antiacne"
+        ];
+        var preco = [
+            50.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+            100.00,
+        ];
+        var sliceProdutos = produtos.slice();
+        var sliceProdutosPreco = preco.slice();
+        for (var index = 0; index < sliceProdutos.length; index++) {
+            var adicionandoProdutos = new produto_1.default(sliceProdutos[index], sliceProdutosPreco[index]);
+            this.produtos.push(adicionandoProdutos);
+        }
+    };
     return CadastroProduto;
 }(cadastro_1.default));
 exports.default = CadastroProduto;

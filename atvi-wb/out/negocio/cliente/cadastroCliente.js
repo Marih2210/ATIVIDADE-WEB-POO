@@ -38,7 +38,7 @@ var CadastroCliente = /** @class */ (function (_super) {
         var nome = this.entrada.receberTexto("Por favor informe o nome do cliente: ");
         var nomeSocial = this.entrada.receberTexto("Por favor informe o nome social do cliente: ");
         //Genero
-        var genero = this.entrada.receberTexto("Por favor informe o seu g\u00EAnero, no padr\u00E3o F/M: ");
+        var genero = this.entrada.receberTexto("Por favor informe o seu g\u00EAnero, no padr\u00E3o Feminino/Masculino: ");
         //CPF
         var valor = this.entrada.receberTexto("Por favor informe o n\u00FAmero do cpf: ");
         var data = this.entrada.receberTexto("Por favor informe a data de emiss\u00E3o do cpf, no padr\u00E3o dd/mm/yyyy: ");

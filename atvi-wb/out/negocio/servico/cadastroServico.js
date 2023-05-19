@@ -36,6 +36,36 @@ var CadastroServico = /** @class */ (function (_super) {
         var servico = new servico_1.default(nomeServico, precoServico);
         this.servicos.push(servico);
     };
+    CadastroServico.prototype.gerarProntos = function () {
+        var servicos = [
+            "venda de produtos especializados",
+            "tratamento para quedas de cabelo",
+            "remoção  de  rugas",
+            "modelagem e corte de barba",
+            "corte de cabelo",
+            "remoção  de manchas na pele",
+            "aplicação de botox",
+            "tratamento para emagrecimento",
+            "redução de medidas"
+        ];
+        var preco = [
+            250.00,
+            750.0,
+            120.00,
+            100.00,
+            15.00,
+            20.00,
+            75.00,
+            250.00,
+            20.00
+        ];
+        var sliceServico = servicos.slice();
+        var sliceServicoPreco = preco.slice();
+        for (var index = 0; index < sliceServico.length; index++) {
+            var adicionarServico = new servico_1.default(sliceServico[index], Number(sliceServicoPreco[index]));
+            this.servicos.push(adicionarServico);
+        }
+    };
     return CadastroServico;
 }(cadastro_1.default));
 exports.default = CadastroServico;

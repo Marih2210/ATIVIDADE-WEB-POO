@@ -27,8 +27,8 @@ var ListagemClientesGenero = /** @class */ (function (_super) {
         return _this;
     }
     ListagemClientesGenero.prototype.listar = function () {
-        var mulheres = this.clientes.filter(function (cliente) { return cliente.genero === "F"; });
-        var homens = this.clientes.filter(function (cliente) { return cliente.genero === "M"; });
+        var mulheres = this.clientes.filter(function (cliente) { return cliente.genero === "Feminino"; });
+        var homens = this.clientes.filter(function (cliente) { return cliente.genero === "Masculino"; });
         console.log("\nLista dos clientes do sexo feminino:");
         mulheres.forEach(function (cliente) {
             console.log("Nome: " + cliente.nome);

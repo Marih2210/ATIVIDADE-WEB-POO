@@ -14,6 +14,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -30,47 +39,30 @@ var CincoClientesMaisConsumiramValor = /** @class */ (function (_super) {
     }
     CincoClientesMaisConsumiramValor.prototype.listar = function () {
         console.log("\nOs 5 clientes que mais consumiram em valor:");
-        var produtos = [];
-        var servicos = [];
-        this.produtos.forEach(function (produto) {
-            produtos.push(produto);
-        });
-        this.servicos.forEach(function (servico) {
-            servicos.push(servico);
-        });
+        var produtos = __spreadArray([], this.produtos, true);
+        var servicos = __spreadArray([], this.servicos, true);
         this.clientes.forEach(function (cliente) {
             var precoPedido = 0;
             cliente.getProdutosConsumidos.forEach(function (prodConsumido) {
-                for (var index = 0; index < produtos.length; index++) {
-                    if (produtos[index].nomeProduto == prodConsumido.nomeProduto) {
-                        precoPedido += produtos[index].precoProduto;
-                    }
+                var produto = produtos.find(function (item) { return item.nomeProduto === prodConsumido.nomeProduto; });
+                if (produto) {
+                    precoPedido += produto.precoProduto;
                 }
             });
             cliente.getServicosConsumidos.forEach(function (servConsumido) {
-                for (var indexS = 0; indexS < servicos.length; indexS++) {
-                    if (servicos[indexS].nomeServico == servConsumido.nomeServico) {
-                        precoPedido += servicos[indexS].precoServico;
-                    }
+                var servico = servicos.find(function (item) { return item.nomeServico === servConsumido.nomeServico; });
+                if (servico) {
+                    precoPedido += servico.precoServico;
                 }
             });
             cliente.precoPedido = precoPedido;
         });
-        this.clientes.sort(function (precoPedido1, precoPedido2) { return (precoPedido1.precoPedido > precoPedido2.precoPedido) ? -1 : 1; });
+        this.clientes.sort(function (cliente1, cliente2) { return (cliente1.precoPedido > cliente2.precoPedido) ? -1 : 1; });
         var ordemPedido = 1;
-        if (this.clientes.length > 5) {
-            for (var i = 0; i < 5; i++) {
-                this.clientes.forEach(function (preco) {
-                    console.log("".concat(ordemPedido, " - ").concat(preco.nome, ": ").concat(preco.precoPedido));
-                    ordemPedido++;
-                });
-            }
-        }
-        else {
-            this.clientes.forEach(function (preco) {
-                console.log("".concat(ordemPedido, " - ").concat(preco.nome, ": ").concat(preco.precoPedido));
-                ordemPedido++;
-            });
+        for (var i = 0; i < Math.min(this.clientes.length, 5); i++) {
+            var cliente = this.clientes[i];
+            console.log("".concat(ordemPedido, " - ").concat(cliente.nome, ": ").concat(cliente.precoPedido));
+            ordemPedido++;
         }
     };
     return CincoClientesMaisConsumiramValor;

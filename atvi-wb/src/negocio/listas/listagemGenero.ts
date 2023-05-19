@@ -8,8 +8,8 @@ export default class ListagemClientesGenero extends Listagem {
         this.clientes = clientes
     }
     public listar(): void {
-        const mulheres = this.clientes.filter(cliente => cliente.genero === "F");
-        const homens = this.clientes.filter(cliente => cliente.genero === "M");
+        const mulheres = this.clientes.filter(cliente => cliente.genero === "Feminino");
+        const homens = this.clientes.filter(cliente => cliente.genero === "Masculino");
     
         console.log(`\nLista dos clientes do sexo feminino:`);
         mulheres.forEach(cliente => {

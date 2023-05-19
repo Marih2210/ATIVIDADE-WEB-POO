@@ -5,6 +5,7 @@ import CadastroCliente from "../negocio/cliente/cadastroCliente";
 import ListagemClientes from "../negocio/cliente/listagemClientes";
 import EditarClientes from "../negocio/cliente/editarCliente";
 import ExcluirClientes from "../negocio/cliente/excluirCliente";
+import ClientesGerados from "../negocio/cliente/clientesProntos";
 
 import CadastroProduto from "../negocio/produto/cadastroProduto";
 import ListagemProdutos from "../negocio/produto/listagemProduto";
@@ -32,6 +33,12 @@ import CincoClientesMaisConsumiramValor from "../negocio/listas/cincoClientesMai
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
 let execucao = true
+let cadastroProduto = new CadastroProduto(empresa.getProdutos);
+let cadastroServico = new CadastroServico(empresa.getServicos);
+let gerarClientes = new ClientesGerados(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+cadastroServico.gerarProntos();
+cadastroProduto.gerarProntos();
+gerarClientes.gerarProntos();
 
 while (execucao) {
     console.log(`Opções:`);
@@ -192,4 +199,5 @@ while (execucao) {
         default:
             console.log(`Operação não entendida :(`)
     }
+    
 }

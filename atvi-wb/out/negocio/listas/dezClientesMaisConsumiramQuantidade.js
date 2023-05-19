@@ -29,20 +29,8 @@ var DezClientesMaisConsumiramQuantidade = /** @class */ (function (_super) {
     DezClientesMaisConsumiramQuantidade.prototype.listar = function () {
         console.log("\nOs 10 clientes que mais consumiram em quantidade:");
         this.clientes.sort(function (a, b) { return (b.getProdutosConsumidos.length + b.getServicosConsumidos.length - a.getProdutosConsumidos.length + a.getServicosConsumidos.length) ? -1 : 1; });
-        var ordem = 1;
-        if (this.clientes.length > 9) {
-            for (var i = 0; i < 9; i++) {
-                this.clientes.forEach(function (ord) {
-                    console.log("".concat(ordem, " - ").concat(ord.nome));
-                    ordem++;
-                });
-            }
-        }
-        else {
-            this.clientes.forEach(function (ord) {
-                console.log("".concat(ordem, " - ").concat(ord.nome));
-                ordem++;
-            });
+        for (var i = 0; i < Math.min(this.clientes.length, 10); i++) {
+            console.log("".concat(i + 1, " - ").concat(this.clientes[i].nome));
         }
     };
     return DezClientesMaisConsumiramQuantidade;

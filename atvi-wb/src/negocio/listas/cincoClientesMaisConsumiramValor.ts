@@ -16,58 +16,39 @@ export default class CincoClientesMaisConsumiramValor extends Listagem {
 
     public listar(): void {
         console.log(`\nOs 5 clientes que mais consumiram em valor:`);
-
-        let produtos: Array<Produto> = []
-        let servicos: Array<Servico> = []
-
-        this.produtos.forEach(produto => {
-            produtos.push(produto)
-        })
-
-        this.servicos.forEach(servico => {
-            servicos.push(servico)
-        })
-
+    
+        let produtos: Array<Produto> = [...this.produtos];
+        let servicos: Array<Servico> = [...this.servicos];
+    
         this.clientes.forEach(cliente => {
-
-            var precoPedido: number = 0
-
+            let precoPedido: number = 0;
+    
             cliente.getProdutosConsumidos.forEach(prodConsumido => {
-                for (let index = 0; index < produtos.length; index++) {
-                    if (produtos[index].nomeProduto == prodConsumido.nomeProduto) {
-                        precoPedido += produtos[index].precoProduto
-                    }
+                const produto = produtos.find(item => item.nomeProduto === prodConsumido.nomeProduto);
+                if (produto) {
+                    precoPedido += produto.precoProduto;
                 }
             });
-
+    
             cliente.getServicosConsumidos.forEach(servConsumido => {
-                for (let indexS = 0; indexS < servicos.length; indexS++) {
-                    if (servicos[indexS].nomeServico == servConsumido.nomeServico) {
-                        precoPedido += servicos[indexS].precoServico
-                    }
+                const servico = servicos.find(item => item.nomeServico === servConsumido.nomeServico);
+                if (servico) {
+                    precoPedido += servico.precoServico;
                 }
             });
-
-            cliente.precoPedido = precoPedido
+    
+            cliente.precoPedido = precoPedido;
         });
-
-        this.clientes.sort((precoPedido1, precoPedido2) => (precoPedido1.precoPedido > precoPedido2.precoPedido) ? -1 : 1)
-
+    
+        this.clientes.sort((cliente1, cliente2) => (cliente1.precoPedido > cliente2.precoPedido) ? -1 : 1);
+    
         let ordemPedido = 1;
-        
-        if (this.clientes.length > 5) {
-            for (let i = 0; i < 5; i++) {
-                this.clientes.forEach(preco => {
-                    console.log(`${ordemPedido} - ${preco.nome}: ${preco.precoPedido}`);
-                    ordemPedido++;
-                });
-            }
-        }
-        else {
-            this.clientes.forEach(preco => {
-                console.log(`${ordemPedido} - ${preco.nome}: ${preco.precoPedido}`);
-                ordemPedido++;
-            });
+    
+        for (let i = 0; i < Math.min(this.clientes.length, 5); i++) {
+            const cliente = this.clientes[i];
+            console.log(`${ordemPedido} - ${cliente.nome}: ${cliente.precoPedido}`);
+            ordemPedido++;
         }
     }
+    
 }

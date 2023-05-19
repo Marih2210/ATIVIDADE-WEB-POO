@@ -9,6 +9,7 @@ var cadastroCliente_1 = __importDefault(require("../negocio/cliente/cadastroClie
 var listagemClientes_1 = __importDefault(require("../negocio/cliente/listagemClientes"));
 var editarCliente_1 = __importDefault(require("../negocio/cliente/editarCliente"));
 var excluirCliente_1 = __importDefault(require("../negocio/cliente/excluirCliente"));
+var clientesProntos_1 = __importDefault(require("../negocio/cliente/clientesProntos"));
 var cadastroProduto_1 = __importDefault(require("../negocio/produto/cadastroProduto"));
 var listagemProduto_1 = __importDefault(require("../negocio/produto/listagemProduto"));
 var editarProduto_1 = __importDefault(require("../negocio/produto/editarProduto"));
@@ -30,6 +31,12 @@ var cincoClientesMaisConsumiramValor_1 = __importDefault(require("../negocio/lis
 console.log("Bem-vindo ao cadastro de clientes do Grupo World Beauty");
 var empresa = new empresa_1.default();
 var execucao = true;
+var cadastroProduto = new cadastroProduto_1.default(empresa.getProdutos);
+var cadastroServico = new cadastroServico_1.default(empresa.getServicos);
+var gerarClientes = new clientesProntos_1.default(empresa.getClientes, empresa.getProdutos, empresa.getServicos);
+cadastroServico.gerarProntos();
+cadastroProduto.gerarProntos();
+gerarClientes.gerarProntos();
 while (execucao) {
     console.log("Op\u00E7\u00F5es:");
     console.log("--------------------------------------");
@@ -87,8 +94,8 @@ while (execucao) {
             break;
         // PRODUTOS    
         case 5:
-            var cadastroProduto = new cadastroProduto_1.default(empresa.getProdutos);
-            cadastroProduto.cadastrar();
+            var cadastroProduto_2 = new cadastroProduto_1.default(empresa.getProdutos);
+            cadastroProduto_2.cadastrar();
             break;
         case 6:
             var listagemProduto = new listagemProduto_1.default(empresa.getProdutos);
@@ -104,8 +111,8 @@ while (execucao) {
             break;
         // SERVICOS   
         case 9:
-            var cadastroServico = new cadastroServico_1.default(empresa.getServicos);
-            cadastroServico.cadastrar();
+            var cadastroServico_2 = new cadastroServico_1.default(empresa.getServicos);
+            cadastroServico_2.cadastrar();
             break;
         case 10:
             var listagemServico = new listagemServico_1.default(empresa.getServicos);
