@@ -1,0 +1,147 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.container{
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    grid-gap: 20px;
+    grid-column-gap: 100px;
+    margin: auto;
+    grid-template-rows: 10vh 80vh 10vh;
+}
+
+.botao{
+    width: 147.733px;
+    margin-left: 10px;
+    background-color: rgba(132, 130, 134, 0.81);
+}
+
+.botao:hover{
+    background-color:  rgba(109, 109, 109, 0.81);
+}
+
+.botao_cancelar{
+    width: 147.733px;
+    margin-left: 10px;
+    background-color: rgba(174, 142, 212, 0.81);
+}
+
+.botao_cancelar:hover{
+    background-color: rgba(173, 142, 212, 0.795);
+}
+
+.botoes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.botoes_user{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center !important ;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.topo{
+    margin-top: 70px;
+}
+
+input:hover{
+    background-color: #797979;
+}
+
+.subtitulo{
+    text-align: center !important;
+    justify-content: center !important;
+    margin-left: 50px;
+}
+
+.h6{
+    text-align: center;
+}
+
+main{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+aside{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.box{
+    margin: auto;
+    background-color: #FFFFFE;
+    box-shadow: 0px 1px 42px rgba(151, 116, 208, 0.25);
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+    max-width: 960px;
+    display: flex;
+	flex-wrap: wrap;
+    text-align: center;
+}
+
+.cliente{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.teste{
+    margin-top: 30px;
+}
+
+.margin_left{
+    margin-left: 350px !important;
+}
+
+.edit{
+    color: rgb(0, 0, 0);
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.edit:hover{
+    color: rgb(0, 38, 255);
+    cursor: pointer;
+}
+
+.delete{
+    color: rgb(0, 0, 0);
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.delete:hover{
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+}
+
+.input-field .prefix.active {
+    color: #929192;;
+  }
+
+.input-field label {
+    color: #bdbdbd;
+} 
+
+  @media(max-width: 768px) {
+    body {
+        margin: 0 15px;
+    }
+
+    aside {
+        width: 100%;
+    }
+  }
