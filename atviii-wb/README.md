@@ -1,4 +1,4 @@
-## Para executar o projeto
+## Execução do projeto
 
 I. Abra o console do projeto, na pasta atviii-wb, execute o comando:
 ```console
