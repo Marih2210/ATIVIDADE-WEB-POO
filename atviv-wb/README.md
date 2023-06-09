@@ -11,7 +11,12 @@ II. Vá ate a pasta src/config/database/ e abra o arquivo database.ts, mude os c
 ```console
     localhost, port, username, password, database
 ```
-III. Por fim rode o backend:
+III. Crie a database no seu MySQL:
+
+```console
+    wb
+```
+IV. Por fim rode o backend:
 
 ```console
     npm run dev
